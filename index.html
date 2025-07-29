@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Love You Website 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+    }
+    .question {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e91e63;
+    }
+    .options button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #ff69b4;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .options button:hover {
+      background-color: #e91e63;
+    }
+    #finalScreen {
+      display: none;
+    }
+    #noBtn {
+      position: absolute;
+    }
+  </style>
+</head>
+<body><div id="screens">
+  <div class="screen" id="q1">
+    <div class="question">What's your favorite color?</div>
+    <div class="options">
+      <button onclick="next('q2')">Pink</button>
+      <button onclick="next('q2')">Red</button>
+    </div>
+  </div>  <div class="screen" id="q2" style="display:none;">
+    <div class="question">Choose one: Cat 🐱 or Dog 🐶?</div>
+    <div class="options">
+      <button onclick="next('q3')">Cat</button>
+      <button onclick="next('q3')">Dog</button>
+    </div>
+  </div>  <div class="screen" id="q3" style="display:none;">
+    <div class="question">Do you like chocolates? 🍫</div>
+    <div class="options">
+      <button onclick="next('q4')">Yes</button>
+      <button onclick="next('q4')">Obviously!</button>
+    </div>
+  </div>  <div class="screen" id="q4" style="display:none;">
+    <div class="question">How sweet are you? 😄</div>
+    <div class="options">
+      <button onclick="next('q5')">10/10</button>
+      <button onclick="next('q5')">100/10</button>
+    </div>
+  </div>  <div class="screen" id="q5" style="display:none;">
+    <div class="question">Are you ready for a surprise?</div>
+    <div class="options">
+      <button onclick="next('finalScreen')">Yes!</button>
+      <button onclick="next('finalScreen')">Maybe 😍</button>
+    </div>
+  </div>  <div class="screen" id="finalScreen">
+    <div class="question">I LIKE YOU ❤️ Will you be mine?</div>
+    <div class="options">
+      <button onclick="alert('YAY! 😍')">Yes</button>
+      <button id="noBtn" onclick="runAway(this)">No</button>
+    </div>
+  </div>
+</div><script>
+  function next(nextId) {
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(s => s.style.display = 'none');
+    document.getElementById(nextId).style.display = 'flex';
+  }
+
+  function runAway(btn) {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 40);
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+  }
+</script></body>
+</html>
